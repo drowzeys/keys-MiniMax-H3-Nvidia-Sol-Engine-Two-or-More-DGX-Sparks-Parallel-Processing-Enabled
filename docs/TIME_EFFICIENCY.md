@@ -38,3 +38,43 @@ bf16 DiT (40 GB) + int8 TE (27 GB) resident ≈ 70 GB, leaving **~50 GB working 
 per node — enough for same-node ESRGAN batches, keyframe re-rolls between chain clips,
 and long-chain context growth without OOM (with earlyoom + choom victim priority, an
 over-budget spike costs one retryable render, never the node).
+
+
+---
+
+# MEASURED BENCHMARK RUN (2026-08-14) — blank page → 2× master in 3h32m
+
+Full production benchmark on the reference fleet: a NEW 2:46 film ("Hesitation" solo cut —
+same structural shape as v6: 27 keyframes, 4 chains, 23 clips) produced start-to-finish
+with this repo's workflow on 3 GB10 Sparks. Every timestamp from the live log:
+
+| Milestone | Clock | Phase time |
+|---|---|---|
+| T0 — blank page (creative plan authoring begins) | 07:33:55 | — |
+| Keyframe board start (CREATE node) | 07:35:36 | plan: 2 min |
+| Board 27/27 + QC + 3 re-rolls sealed | 07:57:23 | board+QC: 22 min |
+| Chains start on ALL 3 nodes | 07:59:34 | — |
+| First chain done (4 clips) | 08:52:23 | 52.8 min |
+| First act 2× upscaled — **overlapped, chains still rendering** | 09:17:08 | — |
+| Last chain done (23/23 clips) | 10:44:36 | chains: 2h45m |
+| Last overlapped 2× done | 11:04:34 | +20 min tail |
+| **1728×960 master assembled** | **11:05:44** | **TOTAL 3h32m** |
+
+**vs the v6 baseline** (same shape, produced without this workflow): board with ~40%
+re-roll rate ≈ 1.2 h; chains ≈ 2.8 h; stitches fetched serially; upscale as a separate
++35 min pass after everything; total ≈ **4.5–5 h clean-path** (the real v6 run took
+longer still due to failures this repo's findings now prevent). **Net: ~25–30% wall
+saved, and the 2× master exists 1 minute after the last upscale instead of 35+.**
+
+## Scheduling findings from the run (encoded in the driver)
+
+1. **Solo-cast discipline pays immediately**: first-roll keyframe QC pass rate was
+   **24/27 (89%)** vs ~60% on v6's couple film — doubling/summoning artifacts were the
+   dominant re-roll cause and are structural, not random.
+2. **Co-located upscaling taxes the co-resident chain ~2×** (13 min clips stretched to
+   25–35 min while ESRGAN shared the GPU), and contention slows the upscale itself
+   ~3–4× (592 s uncontended vs 2284–2401 s contended). It is STILL net-positive —
+   3 of 4 upscales finished inside the chain window — but place the upscale worker on
+   the node whose chain lane is SHORTEST, and expect the final act's upscale to trail
+   ~10–20 min after the last chain.
+3. **Chain clip pace (uncontended): 13.2 min per 10 s clip** at 864×480 bf16 on a GB10.
