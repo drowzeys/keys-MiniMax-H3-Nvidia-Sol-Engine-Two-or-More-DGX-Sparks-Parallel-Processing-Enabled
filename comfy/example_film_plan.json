@@ -1,0 +1,84 @@
+{
+ "song": "/path/to/your_song.mp3",
+ "unet": "minimax_h3_fl2va_pruned_bf16.safetensors",
+ "te_file": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+ "video_vae": "minimax_h3_video_vae_fp16.safetensors",
+ "audio_vae": "minimax_h3_audio_vae_fp32.safetensors",
+ "width": 864,
+ "height": 480,
+ "kf_frames": 22,
+ "clip_duration": 10.0,
+ "seed": 1000,
+ "style": "Photorealistic live-action cinema, elegant tender romantic-drama cinematography, real human skin, natural faces, sharp focus. CANDID observed moment: the subjects are absorbed in each other and their world and NEVER look at the camera. No cartoon, no split screen, no collage, no text, no watermark.",
+ "cast": "The same two people as always: <MAN description>; <WOMAN description>.",
+ "acts": {
+  "act1": {
+   "clips": [
+    {
+     "kf_first": "a1_meet",
+     "kf_last": "a1_walk",
+     "motion": "THEY MEET: on the golden campus path his armful of books slips and scatters; she stops and kneels to help him gather them; their eyes meet over the books and both smile; he helps her up and they begin walking together, talking easily."
+    },
+    {
+     "kf_last": "a1_lamp",
+     "motion": "They walk on together through the campus as the light turns amber, talking and laughing, her shoulder bumping his; the path flows past them; they slow to a stop beneath an old lamp post and he gently tucks a strand of hair behind her ear."
+    }
+   ]
+  },
+  "act2_him": {
+   "clips": [
+    {
+     "kf_first": "h_street",
+     "kf_last": "h_rooftop",
+     "motion": "ALONE: the young man walks a rainy night street with his hands jammed in his jacket pockets, head down, streetlights smearing in the wet; THE WORLD SHIFTS AROUND HIM as the street dissolves into a small city rooftop at night where he leans on the parapet alone, city lights blurred and distant."
+    },
+    {
+     "kf_last": "h_room",
+     "motion": "The rooftop night dissolves into his small dim student room: he lies on the narrow bed staring at the ceiling, one arm behind his head, restless; the desk lamp burns low over unopened books."
+    }
+   ],
+   "solo_cast": "ONLY ONE PERSON IN THIS ENTIRE SCENE: <character>. The <other> does NOT appear anywhere."
+  },
+  "act2_her": {
+   "clips": [
+    {
+     "kf_first": "w_bedroom",
+     "kf_last": "w_window",
+     "motion": "ALONE: the young woman sits on her bedroom floor against the foot of the bed among scattered printed photographs of the two of them, one warm lamp; she rises slowly and drifts to the tall window, pressing her palm to the cold glass, rain outside."
+    },
+    {
+     "kf_last": "w_dinner",
+     "motion": "Her bedroom dissolves into the long formal dining table: she sits alone with her silent parents, staring at her untouched plate, pushing food without eating; the chandelier cold; nobody speaks."
+    }
+   ],
+   "solo_cast": "ONLY ONE PERSON IN THIS ENTIRE SCENE: <character>. The <other> does NOT appear anywhere."
+  },
+  "act3": {
+   "clips": [
+    {
+     "kf_first": "r_market",
+     "kf_last": "r_run",
+     "motion": "THE REUNION: a waking morning market street in soft early light; he wanders in from the left among the stalls, she from the right; across the crowd their eyes find each other and both freeze - then her face breaks open and SHE RUNS to him."
+    },
+    {
+     "kf_last": "r_embrace",
+     "motion": "She crashes into his arms; the fierce embrace holds and holds among the stalls, her face buried in his shoulder, his hand in her hair, both laughing and crying at once; the market flows around them."
+    }
+   ]
+  }
+ },
+ "assembly": [
+  "act1",
+  [
+   "act2_him",
+   "act2_her"
+  ],
+  "act3"
+ ],
+ "keyframes": {
+  "a1_meet": "<prompt \u2014 see docs/FINDINGS.md for the solo-cast and anchoring rules>",
+  "a1_walk": "<prompt \u2014 see docs/FINDINGS.md for the solo-cast and anchoring rules>",
+  "a1_lamp": "<prompt \u2014 see docs/FINDINGS.md for the solo-cast and anchoring rules>",
+  "a1_dancestart": "<prompt \u2014 see docs/FINDINGS.md for the solo-cast and anchoring rules>"
+ }
+}
