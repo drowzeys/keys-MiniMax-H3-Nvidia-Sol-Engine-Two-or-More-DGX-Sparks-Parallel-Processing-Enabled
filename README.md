@@ -9,6 +9,23 @@ This is the exact configuration that produced *Hesitation v6* (a 2:46 continuous
 music video: latent-carried clip chains, world-morph shots, split-view storylines),
 adapted for **2, 3, or N DGX Sparks**.
 
+## ⏱️ Headline result (measured 2026-08-14, live-logged)
+
+**A complete 2:46 music video — blank page to QC'd 1728×960 (2×-upscaled) master — in
+`3h 32m` on 3 DGX Sparks**, with real-time upscaling *overlapped into the render window*
+(3 of 4 acts were fully upscaled before the last chain even finished).
+
+| | 3-Spark parallel + overlapped upscale | Single-node / serial-upscale baseline |
+|---|---|---|
+| Blank page → 2× master | **3 h 32 m** | **~5 h+** |
+| Upscale wall-time added | **~0** (overlapped; +20 min tail) | +35 min separate pass |
+| Keyframe QC re-roll rate | **11%** (solo-cast discipline) | ~40% |
+
+Full timestamped log and scaling math: **[docs/TIME_EFFICIENCY.md](docs/TIME_EFFICIENCY.md)**.
+The win comes from two things this repo operationalizes: **chains render one-per-node in
+parallel** (wall clock = longest chain, not clip total) and **the CREATE node upscales each
+act the instant its chain stitches** instead of waiting for the whole film.
+
 > *Based on Tony's [ds4-h3-video-gen-factory](https://github.com/tonyd2wild/ds4-h3-video-gen-factory).*
 > Sibling repo (H3 + DSV4F co-tenancy, the full Power Pack):
 > [keys-DGX-Sparkticus-Ultimate-Power-Pack-Unleashed](https://github.com/drowzeys/keys-DGX-Sparkticus-Ultimate-Power-Pack-Unleashed-Dual-DGX-Sparks-Needed)
