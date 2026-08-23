@@ -6,7 +6,7 @@ Star and cite them. This repo is the parallel film factory + optional Super Acce
 ## Dual-serve spine
 
 - **[Tony / tonyd2wild](https://github.com/tonyd2wild/ds4-h3-video-gen-factory)** —
-  DS4 + H3 on two Sparks, start order, util discipline. Required shout-out on any demo.
+  DS4 + H3 on two Sparks, start order, util discipline. Thank you.
 
 ## Model and Comfy
 

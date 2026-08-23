@@ -36,7 +36,7 @@ This factory stands on other people's work. Please star them.
 - **[Herrgott continuation suite](https://github.com/HerrgottMargott/Herrgotts-H3-Infinite-Continuation-Suite)**  
 - Super Accel extras: NVIDIA SANA, LightX2V, Lightricks LTX-2.5, madebyollin TAE  
 
-Full list: **[CREDITS.md](CREDITS.md)**. Please donate / support: **[github.com/sponsors/drowzeys](https://github.com/sponsors/drowzeys)**.
+Full list: **[CREDITS.md](CREDITS.md)**. Please donate / support: **[GoFundMe](https://t.co/5O4WUxexXa)**.
 
 > *Based on Tony's [ds4-h3-video-gen-factory](https://github.com/tonyd2wild/ds4-h3-video-gen-factory).*
 > Sibling repo (H3 + DSV4F co-tenancy, the full Power Pack):
