@@ -86,6 +86,19 @@ because the motion context is carried in the latent, not restarted.
   compose in post: `crop=432:480:216:0` each + `hstack`.
 - Suite + KJ SageAttention showed OOMs upstream; v6 ran chains with Sage disabled.
 
+## FINDING 6: Super Acceleration is a CREATE path, not a continuation replacement
+
+NVIDIA [H3 Super Acceleration](https://nvlabs.github.io/Sana/Sol-Engine/H3-Super-Acceleration/) (2026-08-17) is a **4-step H3 draft + 3-step LTX-2.5 refine**. It does **not** carry Herrgott latents, does **not** keep the 20-step sampler, and NVIDIA themselves call it **not lossless**.
+
+On this fleet:
+
+- Run it on **STAGE1 + STAGE2** processes (CREATE-family). Never in a CHAIN process.
+- Two Sparks = NVIDIA’s 1+1 GPU occupancy. Four Sparks = two independent pairs.
+- GB200 **6.85 s / 22×** is a **GB200** measurement. Do not quote it as a GB10 result.
+- cute_sm100 Stage-2 Sol-Attn will not run on sm_121.
+
+Full contract + Spark mapping: [H3_SUPER_ACCELERATION.md](./H3_SUPER_ACCELERATION.md).
+
 ## v6 shape (reference)
 
 Act I — 8-clip chain: meet → walk → dance → **campus-to-dining-hall morph mid-dance** →

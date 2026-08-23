@@ -16,3 +16,4 @@ cd "$HOME/h3-cotenancy/ComfyUI/custom_nodes"
 [ -d Herrgotts-H3-Infinite-Continuation-Suite ] || git clone https://github.com/HerrgottMargott/Herrgotts-H3-Infinite-Continuation-Suite
 sudo apt-get install -y earlyoom 2>/dev/null && sudo systemctl enable --now earlyoom || echo "install earlyoom manually (recommended)"
 echo "node ready — launch with deploy/launch_h3_parallel.sh CHAIN|CREATE"
+echo "optional Super Accel extras: bash deploy/setup_h3_super_accel.sh  # LightX2V + TAEH3 + gated LTX-2.5"

@@ -32,6 +32,18 @@ All numbers measured on the reference fleet 2026-08-13/14 (bf16 finals config).
 Longest chain (8 clips ≈ 1.9 h) set the wall clock — with 4 Sparks and the same film
 re-cut as 6 shorter chains, the same content lands in ~1.4 h.
 
+## NVIDIA Super Acceleration (GB200 published — not a GB10 bench)
+
+NVIDIA SANA measured H3 Super Acceleration on **GB200**, not on this fleet’s GB10 Sparks.
+
+| Setting | Hardware | E2E | vs published SGLang |
+|---|---|---:|---:|
+| 1344×768 · 5 s | 1× GB200 | **6.852 s** | 22.2× |
+| 1344×768 · 10 s | 1× GB200 | **14.931 s** | 27.7× |
+| Same clip on 1–2× GB10 | DGX Spark | **unmeasured** | do not invent a multiplier |
+
+The Spark Comfy path in this repo follows the same 4+3 step contract (see [H3_SUPER_ACCELERATION.md](./H3_SUPER_ACCELERATION.md)). Log a GB10 wall time before quoting throughput.
+
 ## Why H3-only buys headroom
 
 bf16 DiT (40 GB) + int8 TE (27 GB) resident ≈ 70 GB, leaving **~50 GB working headroom**

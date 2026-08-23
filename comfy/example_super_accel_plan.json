@@ -1,0 +1,37 @@
+{
+  "mode": "super_accel",
+  "note": "CREATE-path draft+refine. Not a continuation-chain plan. See docs/H3_SUPER_ACCELERATION.md.",
+  "unet": "minimax_h3_fl2va_pruned_bf16.safetensors",
+  "te_file": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+  "video_vae": "minimax_h3_video_vae_fp16.safetensors",
+  "audio_vae": "minimax_h3_audio_vae_fp32.safetensors",
+  "stage1_lora": "minimax_h3_fl2v_turbo_4step_v1.1_768p_comfyui_bf16.safetensors",
+  "stage1_lora_strength": 1.0,
+  "taeh3_vae": "taeh3.safetensors",
+  "use_taeh3": false,
+  "ltx_unet": "ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
+  "ltx_te": "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+  "ltx_video_vae": "ltx-2.5-video-vae-bf16.safetensors",
+  "ltx_audio_vae": "ltx-2.5-audio-vae-bf16.safetensors",
+  "ltx_upsampler": "ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors",
+  "width": 896,
+  "height": 512,
+  "stage1_frames": 124,
+  "stage2_frames": 121,
+  "fps": 24,
+  "stage1_steps": 4,
+  "stage2_sigmas": "0.909375, 0.725, 0.421875, 0.0",
+  "stage2_width": 1344,
+  "stage2_height": 768,
+  "draft_width": 672,
+  "draft_height": 384,
+  "seed": 20260817,
+  "negative": "pc game, console game, video game, cartoon, childish, ugly, watermark, text overlay",
+  "shots": [
+    {
+      "id": "talking_street",
+      "first_frame": null,
+      "prompt": "A man speaks to a handheld camera on a quiet suburban street at late afternoon. Photorealistic live-action, natural skin, candid observed moment: he is talking to the camera operator and NEVER breaks character. Soft wind, distant traffic, his voice is clear stereo. Single continuous shot, no cut, no text, no watermark."
+    }
+  ]
+}
