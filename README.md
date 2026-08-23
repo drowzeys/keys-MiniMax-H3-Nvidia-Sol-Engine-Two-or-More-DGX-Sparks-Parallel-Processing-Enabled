@@ -26,6 +26,18 @@ The win comes from two things this repo operationalizes: **chains render one-per
 parallel** (wall clock = longest chain, not clip total) and **the CREATE node upscales each
 act the instant its chain stitches** instead of waiting for the whole film.
 
+## Big thanks
+
+This factory stands on other people's work. Please star them.
+
+- **[Tony / tonyd2wild](https://github.com/tonyd2wild/ds4-h3-video-gen-factory)** — dual-serve spine  
+- **MiniMax** · **[Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3)** · **ComfyUI**  
+- **NVIDIA SANA** Sol-Engine / SolAttn · **[kijai](https://github.com/kijai)**  
+- **[Herrgott continuation suite](https://github.com/HerrgottMargott/Herrgotts-H3-Infinite-Continuation-Suite)**  
+- Super Accel extras: NVIDIA SANA, LightX2V, Lightricks LTX-2.5, madebyollin TAE  
+
+Full list: **[CREDITS.md](CREDITS.md)**.
+
 > *Based on Tony's [ds4-h3-video-gen-factory](https://github.com/tonyd2wild/ds4-h3-video-gen-factory).*
 > Sibling repo (H3 + DSV4F co-tenancy, the full Power Pack):
 > [keys-DGX-Sparkticus-Ultimate-Power-Pack-Unleashed](https://github.com/drowzeys/keys-DGX-Sparkticus-Ultimate-Power-Pack-Unleashed-Dual-DGX-Sparks-Needed)
